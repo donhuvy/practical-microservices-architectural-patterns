@@ -48,24 +48,24 @@ import org.slf4j.LoggerFactory;
  */
 public class Send {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Send.class);
-	private final static String QUEUE_NAME = "hello";
+    private static final Logger LOGGER = LoggerFactory.getLogger(Send.class);
+    private final static String QUEUE_NAME = "hello";
 
-	public static void main(String[] argv) throws Exception{
+    public static void main(String[] argv) throws Exception{
 
-		LOGGER.info("Start");
-		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("localhost");
-		Connection connection = factory.newConnection();
-		Channel channel = connection.createChannel();
+        LOGGER.info("Start");
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("localhost");
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
 
-		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-		String message = "Hello World!";
-		channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
-		LOGGER.debug(" [!] Sent '" + message + "'");
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        String message = "Hello World!";
+        channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
+        LOGGER.debug(" [!] Sent '" + message + "'");
 
-		channel.close();
-		connection.close();
-		LOGGER.info("End");
-	}
+        channel.close();
+        connection.close();
+        LOGGER.info("End");
+    }
 }

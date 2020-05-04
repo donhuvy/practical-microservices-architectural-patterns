@@ -1,5 +1,0 @@
-spring:
- application:
-     name: ecom-history
-server:
-  port: 8085

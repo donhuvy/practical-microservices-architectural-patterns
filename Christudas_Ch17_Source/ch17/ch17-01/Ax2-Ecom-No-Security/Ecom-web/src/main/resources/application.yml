@@ -1,8 +1,0 @@
-spring:
-  application:
-      name: ecom-web
-server:
-  port: 8080
-ecom:
-   apigateway:
-    url: http://localhost:9000 

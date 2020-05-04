@@ -1,5 +1,0 @@
-spring:
- application:
-     name: ecom-product
-server:
-  port: 8081

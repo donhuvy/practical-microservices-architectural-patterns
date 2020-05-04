@@ -37,14 +37,15 @@ any nuclear facility.
 
 author <a href="mailto:biniljava<[@>.]yahoo.co.in">Binildas C. A.</a>
 -->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
 
-    <rabbit:connection-factory id="connectionFactory" host="localhost" port="5671" username="guest" password="guest" />
+    <rabbit:connection-factory id="connectionFactory" host="localhost" port="5671" username="guest" password="guest"/>
 
-    <rabbit:admin connection-factory="connectionFactory" />
+    <rabbit:admin connection-factory="connectionFactory"/>
 
-    <rabbit:queue id="msgServerQueue" />
+    <rabbit:queue id="msgServerQueue"/>
 
     <rabbit:topic-exchange id="myExchange" name="MSG-SERVER-EXCHANGE">
         <rabbit:bindings>
@@ -53,13 +54,14 @@ http://www.springframework.org/schema/rabbit http://www.springframework.org/sche
     </rabbit:topic-exchange>
 
     <bean id="aListener" class="com.acme.ch06.ex04.MessageProcessorListener">
-	<constructor-arg ref="amqpTemplate"/>
+        <constructor-arg ref="amqpTemplate"/>
     </bean>
 
     <rabbit:listener-container id="myListenerContainer" connection-factory="connectionFactory">
-        <rabbit:listener ref="aListener" queues="msgServerQueue" /></rabbit:listener-container>
+        <rabbit:listener ref="aListener" queues="msgServerQueue"/>
+    </rabbit:listener-container>
 
 
-    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory"  exchange="NETWORK-EXCHANGE"/>
+    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" exchange="NETWORK-EXCHANGE"/>
 
 </beans>

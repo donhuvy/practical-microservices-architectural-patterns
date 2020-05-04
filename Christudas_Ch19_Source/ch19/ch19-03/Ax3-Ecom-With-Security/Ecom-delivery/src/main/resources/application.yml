@@ -1,5 +1,0 @@
-spring:
- application:
-     name: ecom-delivery
-server:
-  port: 8087

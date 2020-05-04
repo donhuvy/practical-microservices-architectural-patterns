@@ -1,9 +1,0 @@
-spring:
- application:
-     name: ecom-gateway
-server:
-  port: 9000
-zuul:
-  ribbon:
-    eager-load:
-      enabled: true
